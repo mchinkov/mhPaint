@@ -11,6 +11,9 @@ public class Main {
     public static final int widthWindow = 420;
     public static final int lengthWindow = 420;
 
+    public static final int rows = 30;
+    public static final int cols = 30;
+
     //all possible tools
     public enum Tool {
         BRUSH,
@@ -60,6 +63,12 @@ public class Main {
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);
+
+
+        GridManager gridPanel = new GridManager(rows, cols);
+
+        // Add pixels to the center of the window
+        frame.add(gridPanel, BorderLayout.CENTER);
 
         // Add toolbar to the left side of the window
         frame.add(toolBar, BorderLayout.WEST);
