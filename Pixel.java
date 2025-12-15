@@ -1,3 +1,4 @@
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Color;
 
@@ -11,13 +12,32 @@ public class Pixel extends JButton{
         row = r;
         col = c;
 
-        JButton cell = new JButton(); // no text by default
-        cell.setText("o");                
-        cell.setOpaque(true); // shows background?
-        cell.setBackground(Color.WHITE); // starting color
-        cell.setBorderPainted(true); // enables border
-        cell.setFocusPainted(false); // removes focus outline
-        cell.setContentAreaFilled(true);        
+        setText("");                
+        setOpaque(true); // shows background?
+        setBackground(Color.WHITE); // starting color
+        setBorderPainted(true); // enables border
+        setFocusPainted(false); // removes focus outline
+        setContentAreaFilled(true);      
+        
+        setBorder(BorderFactory.createMatteBorder(0, 0, 1, 1, new Color(200,200,200)));
+        setBorderPainted(true);
+        setFocusPainted(false);
+        setFocusable(false);
+
+        addActionListener(e -> 
+            {
+                
+                System.out.println("Clicked " + getCoords());
+
+                if (Main.currentTool == Main.Tool.ERASER)
+                {
+                    setBackground(Color.WHITE);
+                }
+                else
+                {
+                    setBackground(Main.currentColor);
+                }
+             });
     }
 
     public String getCoords()

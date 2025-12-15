@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 
 public class Main {
@@ -21,7 +22,9 @@ public class Main {
         PAINT_BUCKET
     }
 
+
     public static Tool currentTool = Tool.BRUSH;
+    public static Color currentColor = Color.BLACK;
 
     public static void main(String[] args) {
         ImageIcon image = new ImageIcon("Paint Brush Image.png");
@@ -59,7 +62,33 @@ public class Main {
             System.out.println("Tool selected: " + currentTool);
         });
 
+        // Red color button
+        JButton redButton = new JButton("Red");
 
+        redButton.addActionListener(e -> {
+            currentColor = Color.RED;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Blue color button
+        JButton blueButton = new JButton("Blue");
+
+        blueButton.addActionListener(e -> {
+            currentColor = Color.BLUE;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Blue color button
+        JButton blackButton = new JButton("Black");
+
+        blackButton.addActionListener(e -> {
+            currentColor = Color.BLACK;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        toolBar.add(blackButton);
+        toolBar.add(redButton);
+        toolBar.add(blueButton);
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);
