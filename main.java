@@ -6,7 +6,14 @@ import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-
+/**
+ * The Main class initializes the mhPaint application window,
+ * sets up the toolbar and drawing grid, and launches the program.
+ *
+ * @author Michael Chinkov
+ *
+ * @version 01/1/2026
+ */
 public class Main {
 
     public static final int widthWindow = 420;
@@ -14,6 +21,7 @@ public class Main {
 
     public static final int rows = 30;
     public static final int cols = 30;
+
 
     //all possible tools
     public enum Tool {
@@ -26,6 +34,12 @@ public class Main {
     public static Tool currentTool = Tool.BRUSH;
     public static Color currentColor = Color.BLACK;
 
+    /**
+     * Creates and displays the mhPaint application window,
+     * initializes the toolbar and grid, and starts user interaction.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         ImageIcon image = new ImageIcon("Paint Brush Image.png");
         JFrame frame = new JFrame();
@@ -78,7 +92,7 @@ public class Main {
             System.out.println("Color Selected: " + currentColor);
         });
 
-        // Blue color button
+        // Black color button
         JButton blackButton = new JButton("Black");
 
         blackButton.addActionListener(e -> {
