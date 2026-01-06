@@ -78,7 +78,7 @@ public class Main {
             System.out.println("Color Selected: " + currentColor);
         });
 
-        // Blue color button
+        // Black color button
         JButton blackButton = new JButton("Black");
 
         blackButton.addActionListener(e -> {
@@ -86,9 +86,54 @@ public class Main {
             System.out.println("Color Selected: " + currentColor);
         });
 
+        // White color button
+        JButton whiteButton = new JButton("White");
+
+        whiteButton.addActionListener(e -> {
+            currentColor = Color.WHITE;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Green color button
+        JButton greenButton = new JButton("Green");
+
+        greenButton.addActionListener(e -> {
+            currentColor = Color.GREEN;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Grey color button
+        JButton greyButton = new JButton("Grey");
+
+        greyButton.addActionListener(e -> {
+            currentColor = Color.GRAY;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Yellow color button
+        JButton yellowButton = new JButton("Yellow");
+
+        yellowButton.addActionListener(e -> {
+            currentColor = Color.YELLOW;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
+        // Orange color button
+        JButton orangeButton = new JButton("Orange");
+
+        orangeButton.addActionListener(e -> {
+            currentColor = Color.ORANGE;
+            System.out.println("Color Selected: " + currentColor);
+        });
+
         toolBar.add(blackButton);
+        toolBar.add(whiteButton);
+        toolBar.add(greyButton);
         toolBar.add(redButton);
+        toolBar.add(greenButton);
         toolBar.add(blueButton);
+        toolBar.add(yellowButton);
+        toolBar.add(orangeButton);
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);

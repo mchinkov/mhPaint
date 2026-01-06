@@ -6,11 +6,13 @@ public class Pixel extends JButton{
 
     private final int row;
     private final int col;
+    private GridManager gm;
     
-    public Pixel(int r, int c)
+    public Pixel(int r, int c, GridManager g)
     {
         row = r;
         col = c;
+        gm = g;
 
         setText("");                
         setOpaque(true); // shows background?
@@ -33,9 +35,14 @@ public class Pixel extends JButton{
                 {
                     setBackground(Color.WHITE);
                 }
-                else
+                else if (Main.currentTool == Main.Tool.BRUSH)
                 {
                     setBackground(Main.currentColor);
+                }
+                else if (Main.currentTool == Main.Tool.PAINT_BUCKET)
+                {
+                    Color filledColor = getBackground();
+                    gm.paintbucket(row, col, Main.currentColor, filledColor);
                 }
              });
     }
