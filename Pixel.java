@@ -2,6 +2,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Color;
 
+/**
+ * The Pixel class represents a single drawable cell in the paint grid.
+ * Each Pixel responds to user interaction by changing its color
+ * based on the currently selected drawing tool.
+ *
+ * @author Michael Chinkov
+ *
+ * @version 01/1/2026
+ */
 public class Pixel extends JButton{
 
     private final int row;
@@ -47,6 +56,12 @@ public class Pixel extends JButton{
              });
     }
 
+    /**
+     * Returns the row and column coordinates of this pixel
+     * in a readable string format.
+     *
+     * @return a string containing this pixel's coordinates
+     */
     public String getCoords()
     {
         return "(" + row + ", " + col + ")";
