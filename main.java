@@ -19,8 +19,8 @@ public class Main {
     public static final int widthWindow = 420;
     public static final int lengthWindow = 420;
 
-    public static final int rows = 30;
-    public static final int cols = 30;
+    public static final int rows = 100;
+    public static final int cols = 100;
 
 
     //all possible tools
