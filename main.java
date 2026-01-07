@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
@@ -140,6 +141,69 @@ public class Main {
             System.out.println("Color Selected: " + currentColor);
         });
 
+        // Red input
+        JTextField redInput = new JTextField();
+
+        redInput.addActionListener(e -> {
+            String input = redInput.getText();
+
+            try {
+                int redValue = Integer.parseInt(input);
+                
+                if (redValue < 0 || redValue > 255) {
+                    throw new NumberFormatException();
+                }
+
+                Color c = new Color(redValue, currentColor.getGreen(), currentColor.getBlue());
+                currentColor = c;
+                System.out.println("Custom color: " + currentColor);
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid red value. Please enter a number between 0 and 255.");
+            }
+        });
+
+        // Green input
+        JTextField greenInput = new JTextField();
+
+        greenInput.addActionListener(e -> {
+            String input = greenInput.getText();
+
+            try {
+                int greenValue = Integer.parseInt(input);
+
+                if (greenValue < 0 || greenValue > 255) {
+                    throw new NumberFormatException();
+                }
+
+                Color c = new Color(currentColor.getRed(), greenValue, currentColor.getBlue());
+                currentColor = c;
+                System.out.println("Custom color: " + currentColor);
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid green value. Please enter a number between 0 and 255.");
+            }
+        });
+
+        // Blue input
+        JTextField blueInput = new JTextField();
+
+        blueInput.addActionListener(e -> {
+            String input = blueInput.getText();
+
+            try {
+                int blueValue = Integer.parseInt(input);
+
+                if (blueValue < 0 || blueValue > 255) {
+                    throw new NumberFormatException();
+                }
+
+                Color c = new Color(currentColor.getRed(), currentColor.getGreen(), blueValue);
+                currentColor = c;
+                System.out.println("Custom color: " + currentColor);
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid blue value. Please enter a number between 0 and 255.");
+            }
+        });
+
         toolBar.add(blackButton);
         toolBar.add(whiteButton);
         toolBar.add(greyButton);
@@ -148,6 +212,9 @@ public class Main {
         toolBar.add(blueButton);
         toolBar.add(yellowButton);
         toolBar.add(orangeButton);
+        toolBar.add(redInput);
+        toolBar.add(greenInput);
+        toolBar.add(blueInput);
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);
