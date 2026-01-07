@@ -1,28 +1,9 @@
 import java.awt.Color;
 import java.io.*;
-import java.util.*;
 
 public class FileUtil
 {
-	public static Iterator<String> loadFile(String fileName)
-	{
-		try
-		{
-			Scanner in = new Scanner(new File(fileName));
-			List<String> list = new ArrayList<String>();
-			while (in.hasNextLine())
-				list.add(in.nextLine());
-			in.close();
-			return list.iterator();
-		}
-		catch(FileNotFoundException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
-
-	public static void saveFile(String fileName, int rows, int cols, GridManager gm)
-	{
+	public static void saveFile(String fileName, int rows, int cols, GridManager gm) {
         int rowLength = round4(3 * cols);
 
         int[] tag = {0x42, 0x4D}; // BM
@@ -73,21 +54,6 @@ public class FileUtil
                     dos.writeByte(x);
                 }
             }
-
-            /*Pixel[][] pixels = gm.getPixels();
-
-            for (int r = rows - 1; r >= 0; r--)
-            {
-                for (int c = 0; c < cols; c++)
-                {
-                    Color color = pixels[r][c].getBackground();
-
-                    dos.writeByte(color.getBlue());
-                    dos.writeByte(color.getGreen());
-                    dos.writeByte(color.getRed());
-                    dos.writeByte(0x00); // padding
-                }
-            }*/
 
             dos.close();
 		}
