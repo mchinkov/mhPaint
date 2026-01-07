@@ -14,6 +14,8 @@ import java.awt.Color;
  */
 public class GridManager extends JButton{
     private final Pixel[][] pixels; // 2D array storing all pixels in the drawing grid
+    private int ROWS;
+    private int COLS;
 
     /**
      * Constructs a GridManager with the specified number of rows and columns,
@@ -27,8 +29,17 @@ public class GridManager extends JButton{
         setLayout(new GridLayout(rows, cols, 0, 0));
         pixels = new Pixel[rows][cols];
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
+        ROWS = rows;
+        COLS = cols;
+
+        buildGrid();
+
+    }
+
+    private void buildGrid()
+    {
+        for (int r = 0; r < ROWS; r++) {
+            for (int c = 0; c < COLS; c++) {
                 Pixel p = new Pixel(r, c, this);
                 pixels[r][c] = p;
                 add(p);
@@ -57,6 +68,15 @@ public class GridManager extends JButton{
         paintbucket(r, c + 1, fillcolor, replacedColor); // right
         paintbucket(r, c - 1, fillcolor, replacedColor); // left
     }
+
+    public void clear()
+{
+    for (int r = 0; r < ROWS; r++) {
+        for (int c = 0; c < COLS; c++) {
+            pixels[r][c].reset();
+        }
+    }
+}
 
     /**
      * Returns the two-dimensional array of Pixel objects managed by this grid.

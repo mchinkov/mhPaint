@@ -143,6 +143,13 @@ public class Main {
             System.out.println("Color Selected: " + currentColor);
         });
 
+        // Clear color button
+        JButton clearButton = new JButton("Clear");
+
+        clearButton.addActionListener(e -> {
+            gridPanel.clear();
+        });
+
         // Red input
         JTextField redInput = new JTextField();
 
@@ -242,6 +249,7 @@ public class Main {
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);
+        toolBar.add(clearButton);
         toolBar.add(filenameInput);
         toolBar.add(saveButton);
 

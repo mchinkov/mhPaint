@@ -66,4 +66,9 @@ public class Pixel extends JButton{
     {
         return "(" + row + ", " + col + ")";
     }
+
+    public void reset()
+    {
+        setBackground(Color.WHITE);
+    }
 }
