@@ -23,7 +23,6 @@ public class Main {
     public static final int rows = 100;
     public static final int cols = 100;
 
-
     //all possible tools
     public enum Tool {
         BRUSH,
@@ -34,6 +33,7 @@ public class Main {
 
     public static Tool currentTool = Tool.BRUSH;
     public static Color currentColor = Color.BLACK;
+    public static String fileName = "image";
 
     /**
      * Creates and displays the mhPaint application window,
@@ -42,6 +42,8 @@ public class Main {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
+        GridManager gridPanel = new GridManager(rows, cols);
+
         ImageIcon image = new ImageIcon("Paint Brush Image.png");
         JFrame frame = new JFrame();
 
@@ -204,6 +206,28 @@ public class Main {
             }
         });
 
+        // Filename input
+        JTextField filenameInput = new JTextField();
+
+        filenameInput.addActionListener(e -> {
+            String input = filenameInput.getText();
+
+            if (!input.equals("")) {
+                fileName = input;
+                System.out.println("Filename set to: " + fileName);
+            } else {
+                System.out.println("Invalid filename.");
+            }
+        });
+
+        // Save image button
+        JButton saveButton = new JButton("Save Image");
+
+        saveButton.addActionListener(e -> {
+            FileUtil.saveFile(fileName + ".bmp", rows, cols, gridPanel);
+            System.out.println("image saved");
+        });
+
         toolBar.add(blackButton);
         toolBar.add(whiteButton);
         toolBar.add(greyButton);
@@ -218,9 +242,8 @@ public class Main {
         toolBar.add(brushButton);
         toolBar.add(eraserButton);
         toolBar.add(paintBucketButton);
-
-
-        GridManager gridPanel = new GridManager(rows, cols);
+        toolBar.add(filenameInput);
+        toolBar.add(saveButton);
 
         // Add pixels to the center of the window
         frame.add(gridPanel, BorderLayout.CENTER);
